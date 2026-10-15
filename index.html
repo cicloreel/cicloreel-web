@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CicloReel - Transforma tu entrenamiento en casa</title>
+  
+  <!-- Tailwind CSS por CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Configuración de colores y temas exactos a tu proyecto -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            border: 'hsl(240 3.7% 15.9%)',
+            background: 'hsl(240 10% 3.9%)',
+            foreground: 'hsl(0 0% 98%)',
+            primary: {
+              DEFAULT: 'hsl(142.1 70.6% 45.3%)',
+              foreground: 'hsl(144.9 80.4% 10%)',
+            },
+            secondary: {
+              DEFAULT: 'hsl(240 3.7% 15.9%)',
+              foreground: 'hsl(0 0% 98%)',
+            },
+            muted: {
+              DEFAULT: 'hsl(240 3.7% 15.9%)',
+              foreground: 'hsl(240 5% 64.9%)',
+            },
+            card: {
+              DEFAULT: 'hsl(240 10% 3.9%)',
+              foreground: 'hsl(0 0% 98%)',
+            },
+            destructive: 'hsl(0 62.8% 30.6%)',
+            'chart-4': 'hsl(43 74% 66%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: hsl(240 10% 3.9%); color: hsl(0 0% 98%); font-family: system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen bg-background text-foreground antialiased">
+
+  <!-- ================= HEADER ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+            <i data-lucide="activity" class="w-6 h-6 text-primary-foreground"></i>
+          </div>
+          <span class="text-xl font-bold text-foreground">CicloReel</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#inicio" class="text-muted-foreground hover:text-primary transition-colors font-medium">Inicio</a>
+          <a href="#caracteristicas" class="text-muted-foreground hover:text-primary transition-colors font-medium">Características</a>
+          <a href="#descargar" class="text-muted-foreground hover:text-primary transition-colors font-medium">Descargar</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden p-2 text-foreground focus:outline-none" aria-label="Abrir menú">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <nav id="mobile-menu" class="hidden md:hidden py-4 border-t border-border">
+        <div class="flex flex-col gap-4">
+          <a href="#inicio" class="mobile-link text-muted-foreground hover:text-primary transition-colors font-medium py-2">Inicio</a>
+          <a href="#caracteristicas" class="mobile-link text-muted-foreground hover:text-primary transition-colors font-medium py-2">Características</a>
+          <a href="#descargar" class="mobile-link text-muted-foreground hover:text-primary transition-colors font-medium py-2">Descargar</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-16 md:pt-20">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          <span class="text-sm text-muted-foreground">Compatible con bici fija, cinta y remo</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
+          Transforma tu <span class="text-primary">entrenamiento</span> en casa
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+          CicloReel es el simulador de actividad física que convierte tus sesiones de ejercicio en experiencias inmersivas. Conecta tus sensores y comienza a entrenar como nunca antes.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#descargar" class="inline-flex items-center justify-center bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-8 py-4 rounded-lg transition-colors">
+            <!-- Icono Android SVG nativo -->
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.532 15.106a1.003 1.003 0 1 1 .001-2.007 1.003 1.003 0 0 1 0 2.007zm-11.044 0a1.003 1.003 0 1 1 .001-2.007 1.003 1.003 0 0 1 0 2.007zm11.4-6.018 2.006-3.459a.416.416 0 1 0-.721-.416l-2.033 3.506A12.24 12.24 0 0 0 12.001 7.5a12.24 12.24 0 0 0-5.14 1.219L4.828 5.213a.416.416 0 1 0-.721.416l2.006 3.459C2.676 11.191.343 14.964.343 19.2h23.314c0-4.236-2.333-8.009-5.77-10.112z"/>
+            </svg>
+            Descargar APK
+          </a>
+          <a href="#video" class="inline-flex items-center justify-center border border-border text-foreground hover:bg-secondary text-lg font-semibold px-8 py-4 rounded-lg transition-colors">
+            Ver Demo
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <i data-lucide="chevron-down" class="w-8 h-8 text-muted-foreground"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES SECTION ================= -->
+  <section id="caracteristicas" class="py-20 md:py-32">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          Características
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Todo lo que necesitas para entrenar
+        </h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          CicloReel ofrece una experiencia completa de entrenamiento con soporte para múltiples dispositivos y sensores.
+        </p>
+      </div>
+
+      <!-- Features grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="bluetooth" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Conexión Bluetooth</h3>
+          <p class="text-muted-foreground leading-relaxed">Conecta tus sensores de cadencia, velocidad y frecuencia cardíaca vía Bluetooth de forma instantánea.</p>
+        </div>
+
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="cpu" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Compatible con ESP32</h3>
+          <p class="text-muted-foreground leading-relaxed">Integración nativa con microcontroladores ESP32 para crear tus propios sensores personalizados.</p>
+        </div>
+
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="bike" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Bicicleta Fija</h3>
+          <p class="text-muted-foreground leading-relaxed">Simula rutas virtuales mientras pedaleas en tu bici fija con datos en tiempo real.</p>
+        </div>
+
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="activity" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Cinta de Correr</h3>
+          <p class="text-muted-foreground leading-relaxed">Conecta tu cinta de correr y visualiza tu progreso con métricas detalladas.</p>
+        </div>
+
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="waves" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Máquina de Remo</h3>
+          <p class="text-muted-foreground leading-relaxed">Experiencia inmersiva de remo con seguimiento de brazadas y potencia.</p>
+        </div>
+
+        <div class="bg-card border border-border hover:border-primary/50 transition-colors p-6 rounded-xl group">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <i data-lucide="gauge" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-card-foreground mb-2">Métricas en Tiempo Real</h3>
+          <p class="text-muted-foreground leading-relaxed">Visualiza velocidad, distancia, calorías, cadencia y más mientras entrenas.</p>
+        </div>
+
+      </div>
+
+      <!-- ESP32 highlight -->
+      <div class="mt-16 p-8 rounded-2xl bg-card border border-border">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="flex-shrink-0">
+            <div class="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <i data-lucide="cpu" class="w-10 h-10 text-primary"></i>
+            </div>
+          </div>
+          <div class="text-center md:text-left">
+            <h3 class="text-2xl font-bold text-card-foreground mb-2">Integración con ESP32</h3>
+            <p class="text-muted-foreground leading-relaxed max-w-2xl">
+              ¿Quieres crear tu propio sensor? CicloReel es compatible con ESP32, permitiéndote desarrollar sensores personalizados para tu equipo de ejercicio. Conecta tu microcontrolador vía Bluetooth y transmite datos de cadencia, velocidad y más directamente a la aplicación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO SECTION ================= -->
+  <section id="video" class="py-20 md:py-32 bg-secondary/30">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Mira CicloReel en acción</h2>
+          <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Descubre cómo CicloReel transforma tu experiencia de entrenamiento con visualizaciones inmersivas para bici fija, cinta y remo.
+          </p>
+        </div>
+
+        <!-- Video Container / Captura / Demo -->
+        <div class="relative aspect-video rounded-2xl overflow-hidden bg-card border border-border shadow-2xl">
+          <!-- Si querés poner un video MP4 o YouTube en el futuro, podés reemplazar este div por una etiqueta <video> o <iframe> -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center bg-muted">
+            <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-primary flex items-center justify-center mb-6 cursor-pointer hover:scale-105 transition-transform shadow-lg">
+              <i data-lucide="play" class="w-8 h-8 md:w-10 md:h-10 text-primary-foreground ml-1"></i>
+            </div>
+            <p class="text-muted-foreground text-center px-4">
+              <span class="block text-lg font-medium text-foreground mb-1">Video de demostración</span>
+              <span class="text-sm">Próximamente: Tutorial del simulador CicloReel</span>
+            </p>
+          </div>
+
+          <div class="absolute top-4 left-4 flex gap-2">
+            <div class="w-3 h-3 rounded-full bg-destructive/50"></div>
+            <div class="w-3 h-3 rounded-full bg-chart-4/50"></div>
+            <div class="w-3 h-3 rounded-full bg-primary/50"></div>
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-muted-foreground mt-4">* El video se mostrará aquí cuando esté disponible</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DOWNLOAD SECTION ================= -->
+  <section id="descargar" class="py-20 md:py-32 bg-secondary/30">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-card rounded-3xl border border-border p-8 md:p-12 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-10">
+              <!-- Left content -->
+              <div class="flex-1 text-center lg:text-left">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">Disponible ahora</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-card-foreground mb-4">Descarga CicloReel para Android</h2>
+                <p class="text-muted-foreground text-lg mb-8 leading-relaxed">
+                  Comienza a transformar tu entrenamiento hoy. Descarga la aplicación gratuita y conecta tus sensores en minutos.
+                </p>
+
+                <!-- Download button -->
+                <a href="#" class="inline-flex items-center justify-center bg-primary text-primary-foreground hover:bg-primary/90 text-lg font-semibold px-10 py-5 rounded-xl transition-colors w-full sm:w-auto">
+                  <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.532 15.106a1.003 1.003 0 1 1 .001-2.007 1.003 1.003 0 0 1 0 2.007zm-11.044 0a1.003 1.003 0 1 1 .001-2.007 1.003 1.003 0 0 1 0 2.007zm11.4-6.018 2.006-3.459a.416.416 0 1 0-.721-.416l-2.033 3.506A12.24 12.24 0 0 0 12.001 7.5a12.24 12.24 0 0 0-5.14 1.219L4.828 5.213a.416.416 0 1 0-.721.416l2.006 3.459C2.676 11.191.343 14.964.343 19.2h23.314c0-4.236-2.333-8.009-5.77-10.112z"/>
+                  </svg>
+                  Descargar APK
+                  <i data-lucide="download" class="w-5 h-5 ml-3"></i>
+                </a>
+
+                <p class="text-sm text-muted-foreground mt-4">Versión 1.0.0 • Última actualización: Abril 2026</p>
+              </div>
+
+              <!-- Right content - Requirements -->
+              <div class="flex-shrink-0 w-full lg:w-auto">
+                <div class="bg-secondary/50 rounded-2xl p-6 border border-border">
+                  <div class="flex items-center gap-3 mb-4">
+                    <i data-lucide="smartphone" class="w-5 h-5 text-primary"></i>
+                    <h3 class="font-semibold text-card-foreground">Requisitos del sistema</h3>
+                  </div>
+                  <ul class="space-y-3 text-left">
+                    <li class="flex items-center gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 text-primary flex-shrink-0"></i>
+                      <span class="text-muted-foreground text-sm">Android 8.0 o superior</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 text-primary flex-shrink-0"></i>
+                      <span class="text-muted-foreground text-sm">Bluetooth 4.0 o superior</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 text-primary flex-shrink-0"></i>
+                      <span class="text-muted-foreground text-sm">50 MB de espacio libre</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 text-primary flex-shrink-0"></i>
+                      <span class="text-muted-foreground text-sm">Conexión a Internet para actualizaciones</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-12 border-t border-border">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <i data-lucide="activity" class="w-4 h-4 text-primary-foreground"></i>
+          </div>
+          <span class="text-lg font-bold text-foreground">CicloReel</span>
+        </a>
+
+        <!-- Links -->
+        <nav class="flex items-center gap-6">
+          <a href="#inicio" class="text-muted-foreground hover:text-primary transition-colors text-sm">Inicio</a>
+          <a href="#caracteristicas" class="text-muted-foreground hover:text-primary transition-colors text-sm">Características</a>
+          <a href="#descargar" class="text-muted-foreground hover:text-primary transition-colors text-sm">Descargar</a>
+        </nav>
+
+        <!-- Social links -->
+        <div class="flex items-center gap-4">
+          <a href="#" class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-colors" aria-label="GitHub">
+            <i data-lucide="github" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-colors" aria-label="Twitter">
+            <i data-lucide="twitter" class="w-4 h-4"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-colors" aria-label="Email">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 CicloReel. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide Script e Interactividad Mobile -->
+  <script>
+    // Cargar Iconos
+    lucide.createIcons();
+
+    // Menú mobile interactivo
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
